@@ -1,0 +1,47 @@
+.full-index
+{ font-family: san-sarif;
+height: 730px;
+border-style: outset;
+background-color : #9bc400;
+}
+
+.header1
+{ padding: 0px;
+color : black;
+border-style: outset;
+height: 100px;
+background-color: #3CB371;
+text-align: center;
+
+
+}
+
+
+
+fieldset {
+margin: auto;
+width: 350px;
+border: 1px solid #dcdcdc;
+border-radius: 10px;
+padding: 20px;
+text-align: center;
+border-style: outset;
+background-color: #3CB371; }
+
+
+
+
+.login-button
+{  width: 70px;
+background-color: white;
+border-style:inset;
+}
+
+
+legend { margin: auto;
+background-color: #efefef;
+border: 1px solid #dcdcdc;
+border-radius: 10px;
+padding: 10px 20px;
+text-align: left;
+}
