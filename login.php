@@ -4,9 +4,9 @@ session_start();
 require_once 'database_connection.php';
 
 class Login {
+
     public function verify($username, $password) {
         global $Connection; 
-
         $query = "SELECT * FROM users WHERE username=? AND password=?";
         $stmt = mysqli_prepare($Connection, $query);
         mysqli_stmt_bind_param($stmt, 'ss', $username, $password);
@@ -19,6 +19,7 @@ class Login {
             exit();
         } 
         else {
+
             $_SESSION['error'] = 'Invalid username or password';
             header("location: index.php");
             exit();
