@@ -31,6 +31,12 @@ Home
   <br>
     <input type="submit" class= "login-button" name="login" value="login">
     </span>
+    <?php if(isset($_SESSION['error'])) { ?>
+        <script>
+            alert("<?php echo $_SESSION['error']; ?>");
+        </script>
+        <?php unset($_SESSION['error']); ?>
+    <?php } ?>
 </fieldset>
  </form>
  </div>
