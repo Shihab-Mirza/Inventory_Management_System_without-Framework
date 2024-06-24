@@ -1,8 +1,10 @@
 <?php
+session_start(); ?>
 
-session_start();
+
+
+<?php 
 require_once 'database_connection.php';
-
 class Login {
 
     public function verify($username, $password) {
@@ -15,7 +17,7 @@ class Login {
 
         if(mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_array($result);
-            header("location: Home.php");
+            header("location: inventory_home.php");
             exit();
         } 
         else {
