@@ -28,13 +28,15 @@
 
               if ($result->num_rows > 0) {
                   echo "<table>";
-                  echo "<tr><th>Product ID</th><th>Product Name</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th></tr>";
+                  echo "<tr><th>Product ID</th><th>Product Name</th><th>Quantity</th><th>Initial Unit Price</th><th>Updated Unit Price</th><th>Total Price</th></tr>";
                   while($row = $result->fetch_assoc()) {
                       echo "<tr>";
-                      echo "<td>" . $row["id"] . "</td>";
+                    
+                      echo "<td>" . $row["product_id"] . "</td>";
                       echo "<td>" . $row["product_name"] . "</td>";
                       echo "<td>" . $row["quantity"] . "</td>";
                       echo "<td>$" . $row["unit_price"] . "</td>";
+                      echo "<td>$" . $row["updated_unit_price"] . "</td>";
                       echo "<td>$" . $row["total_price"] . "</td>";
                       echo "</tr>";
                   }
@@ -43,7 +45,7 @@
                   echo "0 results";
               }
 
-              $Connection->close();
+              $Connection->close()  ;
               ?>
             </div>
         </div>

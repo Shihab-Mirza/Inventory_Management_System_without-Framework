@@ -6,14 +6,21 @@ class Delete_product{
     {
         require_once 'database_connection.php';
 
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
+        if (isset($_POST['product_id'])) { 
+            $product_id = $_POST['product_id'];
 
-            $sql = "DELETE FROM inventory WHERE id = '$id'";
-            if ($Connection->query($sql) === TRUE) {
-                $_SESSION['success'] = "Product deleted successfully";
+            $sql = "SELECT * FROM inventory WHERE product_id = '$product_id'";
+            $result = $Connection->query($sql);
+
+            if ($result->num_rows > 0) {
+                $sql = "DELETE FROM inventory WHERE product_id = '$product_id'";
+                if ($Connection->query($sql) === TRUE) {
+                    $_SESSION['success'] = "Product deleted successfully";
+                } else {
+                    $_SESSION['error'] = 'Product deletion failed';
+                }
             } else {
-                $_SESSION['error'] = 'Product deletion failed';
+                $_SESSION['error'] = 'Product ID not found';
             }
           
             $Connection->close();
@@ -33,10 +40,17 @@ $delete_product->delete_product();
     <title>Delete Product</title>
 </head>
 <body>
+<div class="container">
+        <div class="sidebar">
+            <h2>Inventory Management</h2>
+            <ul>
+                <li><a href="inventory_home.php">Inventory List</a></li>
+            </ul>
+        </div>
     <h1>Delete Product</h1>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
-        <label for="id">Enter Product ID:</label>
-        <input type="text" id="id" name="id">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+        <label for="product_id">Enter Product ID:</label>
+        <input type="text" id="product_id" name="product_id" required>
         <button type="submit">Delete</button>
     </form>
 
